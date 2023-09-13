@@ -9,6 +9,7 @@ This project will teach you the very fundamentals of programming the GPIO pins o
 | Working Raspberry Pi 1 B+/2/3/4 | 1 |
 | HC-SR04 Distance Sensor | 1 |
 | Resistors (220 Ω) | 7 |
+| Jumper Wires | Q.S |
 | Generic LEDs| 5|
 
 ## Software Required
@@ -47,7 +48,7 @@ You should now be connected to the Raspberry Pi. You should see a Desktop open l
 
 ## Phase 1 - Assembling the LEDs and lighting them up!
 
-We're going to connect a five LED lights to our Raspberry Pi and make them light up and dance!
+We're going to connect five LED lights to our Raspberry Pi and make them light up and dance!
 
 1. Firstly, assemble the circuit by closely observing this diagram and recreating it:
 
