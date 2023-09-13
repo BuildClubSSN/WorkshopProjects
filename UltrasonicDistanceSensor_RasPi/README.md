@@ -118,7 +118,7 @@ We're going to connect a `HC-SR04` Ultrasonic Distance sensor to our Raspberry P
 
     > Q: Why do you think there needs to be a wierdly arranged system of resistors from which the value of `echo` is taken?
 
-    > A/Q: ChatGPT, what are `Voltage Levels`, and what is `Level Shifting`. Why is it done?
+    > A/Q: ChatGPT, what are `Voltage Levels`, and what is `Level Shifting`? Why is it done?
 
 2. After assembling the circuit, open another file called  `Ultra.py` and start with the following code:
 
