@@ -7,10 +7,10 @@ This project will teach you the very fundamentals of programming the GPIO pins o
 | Item | Quantity |
 | -------- | ------- |
 | Working Raspberry Pi 1 B+/2/3/4 | 1 |
-| HC-SR04 Distance Sensor | 1 |
-| Resistors (220 Ω) | 7 |
+| Resistors (220 Ω) | 5 |
 | Jumper Wires | Q.S |
 | Generic LEDs| 5|
+| BreadBoard 400| 1|
 
 ## Software Required
 
@@ -21,6 +21,7 @@ This project will teach you the very fundamentals of programming the GPIO pins o
 1. Raspberry Pi OS
     1. Python3
     2. GPIOZero Python Library
+    3. Flask
 
 Before beginning, make sure you have all of the hardware and software needed!
 
