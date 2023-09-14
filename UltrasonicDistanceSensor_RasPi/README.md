@@ -118,7 +118,7 @@ We're going to connect a `HC-SR04` Ultrasonic Distance sensor to our Raspberry P
 
     IMPORTANT: DO NOT REVERSE THE VCC AND GND PINS! THIS WILL BREAK THE SENSOR OR THE RASPBERRY PI INDEFINITELY!
 
-    > Q: Why do you think there needs to be a wierdly arranged system of resistors from which the value of `echo` is taken?
+    > Q: Why do you think there needs to be a weirdly arranged system of resistors from which the value of `echo` is taken?
 
     > A/Q: ChatGPT, what are `Voltage Levels`, and what is `Level Shifting`? Why is it done?
 
