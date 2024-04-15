@@ -62,7 +62,7 @@ Here are some commonly used Wi-Fi development boards and their pinouts.
 
 1. ESP32 Development Board
 
-    ![ESP32](./Images/ESP32Pinout.webp)
+    ![ESP32](./Images/ESP32Pinout.jpeg)
 
 2. ESP8266 Development Board
 
@@ -124,7 +124,7 @@ Now that we have procured all the hardware required and installed the required s
 
 ![Esp32Wiring](./Images/Esp32Wiring.png)
 
-> Double check the pin connections, the esp32 devkit shown in the picture may slightly differ from the actual one you received, please be vary of that and connect accordingly. The pin numbers are the same in your version too.
+> Double check the pin connections, the esp32 devkit shown in the picture may slightly differ from the actual one you received, please be vary of that and connect accordingly. The pin numbers are the same in your version too, Only difference is in prefix "G" instead of the regular "D".
 
 ## Phase 2 - Coding in Arduino IDE.
 
