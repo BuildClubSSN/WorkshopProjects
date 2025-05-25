@@ -1,147 +1,217 @@
+# 🚀 ESP32 Based Web Server to Control GPIO Pins
 
-# ESP32 Based Web Server to Control GPIO pins
+![ESP32 Banner](./Images/ReadMeResources/esp32_banner.png) 
 
-Hey everyone, if you are reading this on the afternoon of 15th of April 2024 then good news, your most awaited student tech club, The Build Club, is having its workshops again! Yay! LESSGGGOOO (Do me a favour give each other high fives, if possible try giving them to Prez Alamelu and Secretary Aathish if they are available).
+---
 
-Usually you guys can expect my physical presence in workshops but because I took too many ODs, gotta attend classes man :'(
+## 🎉 Welcome to The Build Club Workshop!
 
-Nevertheless do contact me via my WhatsApp number,
+Hey everyone!  
+If you’re reading this on the afternoon of **15th April 2024**, then good news:  
+Your most awaited student tech club, **The Build Club**, is back with workshops!  
+**LESSGGGOOO!** 🙌
+
+> _Do me a favour: give each other high fives! If possible, try giving them to Prez Alamelu and Secretary Aathish if they are around._ 🤗
+
+Usually, you’d see me in person, but I took too many ODs, so gotta attend classes man 😅
+
+---
+
+## 📱 Contact
+
+If you need help, contact me via WhatsApp:  
 ```
 +91 99411 22299
 ```
-I shall try to get to you guys amid my EMF and Microcontrollers lectures. (Pls don't prank call or register my number in random sketchy websites).
+_I’ll try to get to you amid my EMF and Microcontrollers lectures. (Please don’t prank call or register my number on sketchy websites!)_
 
+---
 
+## 📝 Table of Contents
 
+- [🚀 ESP32 Based Web Server to Control GPIO Pins](#-esp32-based-web-server-to-control-gpio-pins)
+  - [🎉 Welcome to The Build Club Workshop!](#-welcome-to-the-build-club-workshop)
+  - [📱 Contact](#-contact)
+  - [📝 Table of Contents](#-table-of-contents)
+  - [🌐 Overview](#-overview)
+  - [🌍 What is a Web Server?](#-what-is-a-web-server)
+  - [⚙️ How Do They Work?](#️-how-do-they-work)
+  - [🛠️ Hardware Requirements](#️-hardware-requirements)
+  - [📶 Wi-Fi Development Board Pinouts](#-wi-fi-development-board-pinouts)
+    - [1. ESP32 Development Board](#1-esp32-development-board)
+    - [2. ESP8266 Development Board](#2-esp8266-development-board)
+  - [🧩 Which GPIO Pins Should We Use?](#-which-gpio-pins-should-we-use)
+  - [💻 Software Requirements](#-software-requirements)
+    - [Downloads and Installations](#downloads-and-installations)
+  - [🧑‍🔧 Phase 1 - Circuit Assembly](#-phase-1---circuit-assembly)
+  - [💻 Phase 2 - Coding in Arduino IDE](#-phase-2---coding-in-arduino-ide)
+  - [🧪 Phase 3 - Testing and Tinkering](#-phase-3---testing-and-tinkering)
+  - [🌟 Inspiration \& Next Steps](#-inspiration--next-steps)
+  - [🙏 Acknowledgements](#-acknowledgements)
 
+---
 
-## Overview
+## 🌐 Overview
 
-In our ESP32 project series this workshop we are to explore the world of web servers and web hosting by locally hosting our own web dashboard to control the GPIO pins, aka input/output pins of our ESP32-WROOM-32 Devkit board. We will then put together a simple circuit consisting of an LED and a MPU6050 sensor to read the orientation of the breadboard.
-Now let's get started!
+In this workshop, we’ll explore the world of web servers and web hosting by **locally hosting our own web dashboard** to control the GPIO pins (input/output pins) of our **ESP32-WROOM-32 Devkit** board.
 
-Please skip to this [section](#software-requirements) if it's past 2pm already.
+We’ll assemble a simple circuit with:
+- An **LED**
+- An **MPU6050 sensor** (to read breadboard orientation)
 
+![Project Overview](./Images/ReadMeResources/project_overview.png) <!-- Add a diagram showing the ESP32, LED, and MPU6050 -->
 
-## What is a Web Server?
+> **If it’s past 2pm, skip to the [Software Requirements](#software-requirements) section!**
 
-A web server is a combination of software and hardware that uses HTTP (Hypertext Transfer Protocol) and other protocols to respond to client requests made over the World Wide Web. The primary function of a web server is to display website content. It accomplishes this by storing, processing, and delivering web pages to users. Apart from HTTP, web servers also support protocols such as SMTP (Simple Mail Transfer Protocol) and FTP (File Transfer Protocol) which are used for email, file transfer, and storage.
+---
 
-Web server hardware is connected to the internet and facilitates the exchange of data with other connected devices. On the other hand, web server software regulates how a user can access hosted files. The web server process is a prime example of the client/server model. It is imperative that all computers hosting websites have web server software installed on them.
+## 🌍 What is a Web Server?
 
-## How do they work?
+A **web server** is a combination of software and hardware that uses HTTP (Hypertext Transfer Protocol) and other protocols to respond to client requests made over the World Wide Web.
 
-Web server software is what enables users to access websites through their domain names and delivers the website's content to the requesting user. The software component consists of several parts, including at least an HTTP server. The HTTP server has the ability to interpret HTTP and URLs. As for the hardware component, a web server is essentially a computer that stores all the necessary web server software and other files related to the website such as HTML documents, images, and JavaScript files.
+- **Primary function:** Display website content by storing, processing, and delivering web pages.
+- **Protocols supported:** HTTP, SMTP (email), FTP (file transfer).
 
-When a user requests a file hosted on a web server through a web browser such as Google Chrome or Firefox, the browser sends an HTTP request to the server. Upon receiving the request, the HTTP server accepts it, locates the required content, and transmits it back to the browser through HTTP.
+![Web Server Diagram](./Images/ReadMeResources/web_server_diagram.png) <!-- Add a diagram showing client-server interaction -->
 
-When a person types a website address in their web browser's address bar, the browser needs to find the website on the internet. This is done by translating the website's name to an IP address through DNS (Domain Name System) or by checking its cache. Once the browser gets the IP address, it connects to the web server hosting the website. The browser then sends a request to the web server for the specific webpage or file that the person wants to view. The web server then responds with the requested page through HTTP. If the requested page does not exist or there's an error, the web server will send an error message to the browser. The browser will then display the webpage if everything is correct.
+---
 
-Check [this](https://youtu.be/9J1nJOivdyw?si=uA2mfJwd8ia0Um7e) video out to know more.
+## ⚙️ How Do They Work?
 
+Web server software enables users to access websites through their domain names and delivers the website’s content to the requesting user.
 
+**Process:**
+1. User requests a file via browser (e.g., Chrome, Firefox).
+2. Browser sends an HTTP request to the server.
+3. Server locates the content and sends it back via HTTP.
+4. If the page doesn’t exist, an error message is sent.
 
+![HTTP Request Flow](./Images/ReadMeResources/http_request_flow.png) 
 
-## Hardware Requirements
+> Check out this [video explanation](https://youtu.be/9J1nJOivdyw?si=uA2mfJwd8ia0Um7e) for more!
 
-| Item | Quantity |
-|--------|--------|
-| Esp32 Wi-Fi board | 1 |
-| MPU 6050 | 1 |
-| Resistor (1k Ω) | 1 |
-| LED | 1 |
-| Data cable | 1 |
-| Breadboard 400 | 1 |
-| Jumper wires | Q.S |
+---
 
+## 🛠️ Hardware Requirements
 
+| Item                  | Quantity |
+|-----------------------|----------|
+| ESP32 Wi-Fi board     | 1        |
+| MPU 6050              | 1        |
+| Resistor (1k Ω)       | 1        |
+| LED                   | 1        |
+| Data cable            | 1        |
+| Breadboard 400        | 1        |
+| Jumper wires          | Q.S      |
 
-## Wi-Fi Development Board Pinouts
+![Hardware Components](./Images/ReadMeResources/hardware_components.png) <!-- Add a photo or illustration of all components -->
 
-Here are some commonly used Wi-Fi development boards and their pinouts.
+---
 
-1. ESP32 Development Board
+## 📶 Wi-Fi Development Board Pinouts
 
-    ![ESP32](./Images/ESP32Pinout.jpeg)
+Here are some commonly used Wi-Fi development boards and their pinouts:
 
-2. ESP8266 Development Board
+### 1. ESP32 Development Board
 
-    ![ESP8266](./Images/ESP8266Pinout.jpg)
+![ESP32 Pinout](./Images/ReadMeResources/ESP32Pinout.jpeg)
 
+### 2. ESP8266 Development Board
 
-## Which GPIO Pins Should We Use?
+![ESP8266 Pinout](./Images/ReadMeResources/ESP8266Pinout.jpg)
 
-The ESP32 chip is equipped with 48 pins that have various functions. However, not all pins are accessible in all ESP32 development boards, and some pins cannot be utilized. There are certain pins with specific functions and certain pins that shouldn't be touched at all. Even tho the pins have been aptly selected for you guys in this project, it is still important that you guys are aware of [these pins](https://randomnerdtutorials.com/esp32-pinout-reference-gpios/).
+---
 
+## 🧩 Which GPIO Pins Should We Use?
 
-## Software Requirements
+The ESP32 chip has **48 pins** with various functions.  
+Not all pins are accessible or usable on all boards.  
+Some pins have special functions or should not be used.
+
+> Even though the pins are pre-selected for this project, it’s important to know about [these pins](https://randomnerdtutorials.com/esp32-pinout-reference-gpios/).
+
+---
+
+## 💻 Software Requirements
 
 ### Downloads and Installations
 
-1. [Arduino IDE](https://www.arduino.cc/en/software) - download all the necessary drivers prompted along the IDE installation.
+1. **[Arduino IDE](https://www.arduino.cc/en/software)**  
+   _Download all necessary drivers prompted during installation._
 
-2. Follow the steps below to install the drivers for Esp32:
+2. **Install ESP32 Board Drivers:**
+    - Copy this URL:
+      ```
+      https://dl.espressif.com/dl/package_esp32_index.json
+      ```
+    - Arduino IDE:  
+      `File > Preferences > Additional boards manager URLs`  
+      Paste the URL and click 'Ok'.
+    - `Tools > Board > Boards Manager`  
+      Search for **esp32** and install by Espressif Systems.
 
-   
-    ```
-    https://dl.espressif.com/dl/package_esp32_index.json
+3. **Install WiFi Library:**
+    - Visit [WiFi Library](https://www.arduino.cc/reference/en/libraries/wifi/)
+    - Download version 1.2.7 as ZIP.
+    - Arduino IDE:  
+      `Sketch > Include Library > Add .ZIP Library`  
+      Select the downloaded ZIP.
 
-    ```
-    
-    1. Copy the above path.
-    2. Open your Arduino IDE.
-    3. File > Preferences > Additional boards manager URLs.
-    4. Paste the above path and click 'Ok'.
-    5. Tools > Board > Boards Manager.
-    6. Search for esp32 and install esp32 by Espressif Systems.
+4. **Install MPU 6050 Library:**
+    - Arduino IDE:  
+      `Sketch > Include Library > Manage libraries`
+    - Search for **adafruit mpu6050** and install.
+    - Also install **Adafruit Unified Sensor** and **Adafruit Bus IO**.
 
-3. Follow the steps below to install the WiFi library required for todays session:
+---
 
-    1. Visit the official documentation page of the [WiFi](https://www.arduino.cc/reference/en/libraries/wifi/) library.
-    2. Click on the latest version 1.2.7 and download the zip file.
-    3. Open your Arduino IDE.
-    4. Sketch > Include Library > Add .ZIP Library.
-    5. Browse for the zip file you just downloaded.
-    6. You shall see a confirmation message on the arduino terminal once the library has been installed successfully.
+## 🧑‍🔧 Phase 1 - Circuit Assembly
 
-4. Follow the steps below to install the MPU 6050 library required for todays session:
+Now that you have all the hardware and software ready, let’s assemble the circuit!
 
-    1. Open your Arduino IDE.
-    2. Sketch > Include Library > Manage libraries
-    3. Type “adafruit mpu6050” on the search box and install the library.
-    4. You shall see a confirmation message on the arduino 
-terminal once the library has been installed successfully
-    5. Then, search for “Adafruit Unified Sensor”. Scroll all the way down to find the library and install it.
-    6. Finally, search for “Adafruit Bus IO” and install it.
+![ESP32 Wiring](./Images/ReadMeResources/Esp32Wiring.png)
 
+> **Double check the pin connections!**  
+> The ESP32 devkit shown may differ from yours. Pin numbers are the same, but prefixes may vary ("G" vs "D").
 
+---
 
+## 💻 Phase 2 - Coding in Arduino IDE
 
+Open the well-documented [Esp32Webserver](./Esp32Webservewr.ino) Arduino file in this repository.
 
-## Phase 1 - Circuit Assembly.
+- Code along with your peers!
+- Ask questions if you’re stuck.
+- If you’re new to Arduino IDE, ask instructors for help during compilation and execution.
 
-Now that we have procured all the hardware required and installed the required software, drivers and libraries, let's get started with the circuit assembly!
+---
 
-![Esp32Wiring](./Images/Esp32Wiring.png)
+## 🧪 Phase 3 - Testing and Tinkering
 
-> Double check the pin connections, the esp32 devkit shown in the picture may slightly differ from the actual one you received, please be vary of that and connect accordingly. The pin numbers are the same in your version too, Only difference is in prefix "G" instead of the regular "D".
+If you followed the instructions and had some luck, you should be proud of your creation!  
+If not, don’t worry — we’re here to help.
 
-## Phase 2 - Coding in Arduino IDE.
+> **Tip:**  
+> Experiment with different GPIO pins, sensors, or web dashboard designs for extra fun!
 
-Open the well documented [Esp32Webserver](./Esp32Webserver.ino) arduino file available in the same repository. Have a fun code along session with your peers, shoot out any questions you may have to ask, even if the instructor doesn't know he would get back to you shortly. If you are new to using the Arduino IDE do ask around the instructors for help during compilation and execution of the code. Don't hesitate to text me if you come across any hiccups.
+---
 
-## Phase 3 - Testing and Tinkering.
+## 🌟 Inspiration & Next Steps
 
-If you have followed the instructions exactly as instructed and have had some luck then you should be proud and delighted of what you just created. Nevertheless even if you failed to get the required  results, Don't worry we are here to help you out.
+- Explore more microcontroller projects.
+- Refer to Arduino documentation and the active online community for help.
+- Try adding more sensors or controlling multiple devices from your web dashboard.
 
-Hope you had a great time and maybe got inspired to make something of your own. I feel that now you are ready to delve into the world of microcontrollers and explore similar projects on your own. Refer to the online documentation for arduino and get help from the active online community when you hit dead-ends.
+---
 
-Until then stay creative and I will see you next time.
+## 🙏 Acknowledgements
 
-## Acknowledgements
+- [ESP32 Web Server with Bootstrap](https://www.hackster.io/onedeadmatch/esp32-web-server-with-bootstrap-b80105)
+- [Random Nerd Tutorials](https://randomnerdtutorials.com/)
+- [Random Nerd Tutorials MPU 6050](https://randomnerdtutorials.com/esp32-mpu-6050-accelerometer-gyroscope-arduino/)
+- [What Is?](https://www.techtarget.com/whatis/definition/Web-server)
 
- - [ESP32 Web Server with Bootstrap](https://www.hackster.io/onedeadmatch/esp32-web-server-with-bootstrap-b80105)
- - [Random Nerd Tutorials](https://randomnerdtutorials.com/)
- - [Random Nerd Tutorials MPU 6050](https://randomnerdtutorials.com/esp32-mpu-6050-accelerometer-gyroscope-arduino/)
- - [What Is?](https://www.techtarget.com/whatis/definition/Web-server)
+---
+
+> _Stay creative and see you next time!_ 🚀
 
