@@ -17,21 +17,10 @@ Usually, you’d see me in person, but I took too many ODs, so gotta attend clas
 
 ---
 
-## 📱 Contact
-
-If you need help, contact me via WhatsApp:  
-```
-+91 99411 22299
-```
-_I’ll try to get to you amid my EMF and Microcontrollers lectures. (Please don’t prank call or register my number on sketchy websites!)_
-
----
-
 ## 📝 Table of Contents
 
 - [🚀 ESP32 Based Web Server to Control GPIO Pins](#-esp32-based-web-server-to-control-gpio-pins)
   - [🎉 Welcome to The Build Club Workshop!](#-welcome-to-the-build-club-workshop)
-  - [📱 Contact](#-contact)
   - [📝 Table of Contents](#-table-of-contents)
   - [🌐 Overview](#-overview)
   - [🌍 What is a Web Server?](#-what-is-a-web-server)
@@ -214,4 +203,5 @@ If not, don’t worry — we’re here to help.
 ---
 
 > _Stay creative and see you next time!_ 🚀
+
 
